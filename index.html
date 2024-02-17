@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Music Library App</title>
+</head>
+
+<body>
+  <main class="grid place-content-center">
+    <section class="container px-4 mx-auto grid place-items-center">
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <figure>
+          <img src="" id="albumImg" alt="Album" crossorigin="anonymous" />
+        </figure>
+        <div class="card-body">
+          <audio src=""></audio>
+          <div>
+            <div>
+              <p class="font-bold" id="songName"></p>
+              <small id="songArtist"></small>
+            </div>
+            <input value="0" id="audioTracker" title="Audio Tracker" type="range" class="range range-xs my-5">
+          </div>
+          <div class="flex justify-between mb-12">
+            <button class="btn btn-circle btn-outline btn-sm" title="shuffle" type="button" id="shuffle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-shuffle">
+                <polyline points="16 3 21 3 21 8"></polyline>
+                <line x1="4" y1="20" x2="21" y2="3"></line>
+                <polyline points="21 16 21 21 16 21"></polyline>
+                <line x1="15" y1="15" x2="21" y2="21"></line>
+                <line x1="4" y1="4" x2="9" y2="9"></line>
+              </svg>
+            </button>
+            <button class="btn btn-circle btn-outline btn-sm" title="Previous Song" id="prev" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+            <button class="btn btn-circle btn-outline btn-sm" id="playPause" type="button" data-playing="false"
+              role="switch" aria-checked="false" title="Play/Pause">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 7.5V18M15 7.5V18M3 16.811V8.69c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811Z" />
+                </svg>
+              </span>
+            </button>
+            <button class="btn btn-circle btn-outline btn-sm" id="next" type="button" title="Next Song">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+            <button class="btn btn-circle btn-outline btn-sm" title="Stop" id="stop" type="button" data-playing="false"
+              role="none">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div class="card-actions">
+            <div class="flex gap-5">
+              <div class="flex gap-3 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                </svg>
+                <input title="volume" type="range" id="volume" min="0" max="2" value="1" step="0.01"
+                  class="range range-xs" />
+              </div>
+              <div class="flex gap-3 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-headphones">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                  <path
+                    d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                  </path>
+                </svg>
+                <input title="Stereo Balancing Panner" type="range" id="panner" min="-1" max="1" value="0" step="0.01"
+                  class="range range-xs" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
