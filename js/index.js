@@ -1,4 +1,4 @@
-import { musicLists } from '/js/musicLib.js';
+import { musicLists } from '/mp3-player/js/musicLib.js';
 
 const audioContext = new AudioContext();
 const sampleAudio = document.querySelector("audio");
